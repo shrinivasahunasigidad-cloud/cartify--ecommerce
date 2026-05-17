@@ -46,7 +46,7 @@ export default function CartPage() {
             />
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-gray-900">{item.product.title}</h3>
-              <p className="text-gray-600">₹{item.product.price.toFixed(2)}</p>
+              <p className="text-gray-600">₹{(item.product.price_inr || item.product.price || 0).toFixed(2)}</p>
             </div>
             <div className="flex items-center gap-3">
               <button

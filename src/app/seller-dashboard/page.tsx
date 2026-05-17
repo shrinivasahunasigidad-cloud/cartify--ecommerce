@@ -185,7 +185,7 @@ export default function SellerDashboard() {
                         </div>
                       </td>
                       <td className="px-8 py-6 text-gray-600">{product.category}</td>
-                      <td className="px-8 py-6 font-bold text-gray-900">₹{product.price.toFixed(2)}</td>
+                      <td className="px-8 py-6 font-bold text-gray-900">₹{(product.price_inr || product.price || 0).toFixed(2)}</td>
                       <td className="px-8 py-6 text-gray-600">{product.stock}</td>
                       <td className="px-8 py-6">
                         <span className={`px-3 py-1 rounded-full text-xs font-bold ${
