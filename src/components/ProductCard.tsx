@@ -25,6 +25,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   const price = product.price_inr || product.price || 0;
   const stock = product.stock || 10;
+  const rating = product.rating || 0;
 
   return (
     <motion.div
@@ -49,9 +50,9 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="flex items-center gap-2 mb-1">
           <span className="text-xs font-medium text-orange-600 uppercase tracking-wider">{product.category}</span>
           <div className="flex items-center gap-1 text-yellow-600 text-sm">
-            {'★'.repeat(Math.floor(product.rating))}
-            {'☆'.repeat(5 - Math.floor(product.rating))}
-            <span className="text-gray-500 ml-1 text-xs">{product.rating}</span>
+            {'★'.repeat(Math.floor(rating))}
+            {'☆'.repeat(5 - Math.floor(rating))}
+            <span className="text-gray-500 ml-1 text-xs">{rating}</span>
           </div>
         </div>
         <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">{product.title}</h3>
@@ -59,16 +60,18 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="flex justify-between items-center pt-2 border-t border-gray-100">
           <span className="text-xl font-bold text-orange-600">₹{price.toFixed(2)}</span>
           <div className="flex gap-2">
-            <motion.a
-              href={product.product_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gray-100 text-gray-800 px-3 py-1.5 rounded-md text-xs font-medium shadow-sm hover:bg-gray-200 transition-all"
-            >
-              View Product
-            </motion.a>
+            {product.product_url && (
+              <motion.a
+                href={product.product_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gray-100 text-gray-800 px-3 py-1.5 rounded-md text-xs font-medium shadow-sm hover:bg-gray-200 transition-all"
+              >
+                View Product
+              </motion.a>
+            )}
             <motion.button
               onClick={handleAddToCart}
               whileHover={{ scale: 1.05 }}
