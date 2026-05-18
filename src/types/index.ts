@@ -12,13 +12,15 @@ export interface Product {
   id: string;
   title: string;
   category: string;
-  price_inr: number;
-  rating: number;
-  image_url: string;
-  product_url: string;
-  description: string;
+  price_inr?: number;
+  rating?: number;
+  image_url?: string;
+  product_url?: string;
+  description?: string;
   stock?: number;
   price?: number;
+  seller_id?: string;
+  approval_status?: string;
 }
 
 export interface CartItem {
